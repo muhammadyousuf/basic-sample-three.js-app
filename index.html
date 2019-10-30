@@ -38,11 +38,39 @@
       controls = new THREE.OrbitControls(camera, renderer.domElement);
       var geometry = new THREE.BoxGeometry(1, 1, 1);
 
+      var cubeMaterial = [
+        new THREE.MeshBasicMaterial({
+          map: new THREE.TextureLoader().load("img/1.png"),
+          side: THREE.DoubleSide
+        }),
+        new THREE.MeshBasicMaterial({
+          map: new THREE.TextureLoader().load("img/2.png"),
+          side: THREE.DoubleSide
+        }),
+        new THREE.MeshBasicMaterial({
+          map: new THREE.TextureLoader().load("img/3.png"),
+          side: THREE.DoubleSide
+        }),
+        new THREE.MeshBasicMaterial({
+          map: new THREE.TextureLoader().load("img/4.png"),
+          side: THREE.DoubleSide
+        }),
+        new THREE.MeshBasicMaterial({
+          map: new THREE.TextureLoader().load("img/5.png"),
+          side: THREE.DoubleSide
+        }),
+        new THREE.MeshBasicMaterial({
+          map: new THREE.TextureLoader().load("img/6.png"),
+          side: THREE.DoubleSide
+        })
+      ];
       // create a material, colour or image texture
-      var material = new THREE.MeshBasicMaterial({
-        color: 0x0000ff,
-        wireframe: true
-      });
+
+      var material = new THREE.MeshFaceMaterial(cubeMaterial);
+      // var material = new THREE.MeshBasicMaterial({
+      //   color: 0x0000ff,
+      //   wireframe: true
+      // });
       var cube = new THREE.Mesh(geometry, material);
 
       scene.add(cube);
@@ -50,8 +78,12 @@
 
       // game logic
       var update = function() {
-        // cube.rotation.x += 0.01;
-        // cube.rotation.y += 0.005;
+        cube.rotation.x += 0.2222222222;
+        cube.rotation.y += 0.1466665;
+        setTimeout(() => {
+          cube.rotation.x = 0;
+          cube.rotation.y = 0;
+        }, 10000);
       };
 
       // draw scene
